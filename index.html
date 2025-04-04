@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form with File Upload</title>
+  <script>
+    UPLOADCARE_PUBLIC_KEY = "39990cd27c833ace1e9a";
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #2a6ee0;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1a4fbf;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Contact Us</h2>
+  <form action="https://weldingworldinc.getform.com/yjgmg" method="POST">
+    
+    <label for="name">Name:</label>
+    <input type="text" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required />
+
+    <label for="message">Message:</label>
+    <textarea name="message" rows="5" required></textarea>
+
+    <label for="file">Attach a File:</label>
+    <input type="hidden" role="uploadcare-uploader" name="file" data-multiple="false" />
+
+    <button type="submit">Send</button>
+  </form>
+
+</body>
+</html>
