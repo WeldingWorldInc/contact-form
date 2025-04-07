@@ -3,65 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Form with File Upload</title>
+  <title>Contact Form</title>
+
   <script>
     UPLOADCARE_PUBLIC_KEY = "39990cd27c833ace1e9a";
   </script>
   <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+
   <style>
     body {
       font-family: sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+    .form-container {
+      background: #fff;
+      padding: 30px;
       border-radius: 10px;
-      background: #f9f9f9;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     label {
-      font-weight: bold;
       display: block;
+      font-weight: bold;
       margin-top: 15px;
     }
     input, textarea, button {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
       font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     button {
       background-color: #2a6ee0;
-      color: white;
+      color: #fff;
       border: none;
       margin-top: 20px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #1a4fbf;
+      background-color: #1f56b0;
+    }
+    .success-message {
+      display: none;
+      background: #e0ffe2;
+      border: 1px solid #3ac44b;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      text-align: center;
+      color: #23672a;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <h2>Contact Us</h2>
-  <form action="https://weldingworldinc.getform.com/yjgmg" method="POST">
-    
-    <label for="name">Name:</label>
-    <input type="text" name="name" required />
+  <div class="form-container">
+    <h2>Contact Us</h2>
+    <form 
+      action="https://weldingworldinc.getform.com/yjgmg" 
+      method="POST" 
+      target="dummy-frame" 
+      onsubmit="handleSubmit(event)"
+    >
+      <label>Name:</label>
+      <input type="text" name="name" required />
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" required />
+      <label>Email:</label>
+      <input type="email" name="email" required />
 
-    <label for="message">Message:</label>
-    <textarea name="message" rows="5" required></textarea>
+      <label>Message:</label>
+      <textarea name="message" rows="5" required></textarea>
 
-    <label for="file">Attach a File:</label>
-    <input type="hidden" role="uploadcare-uploader" name="file" data-multiple="false" />
+      <label>Attach a File:</label>
+      <input type="hidden" role="uploadcare-uploader" name="file" data-multiple="false" />
 
-    <button type="submit">Send</button>
-  </form>
+      <button type="submit">Send</button>
+    </form>
+
+    <div class="success-message" id="success-message">
+      ✅ Thank you! Your message was sent successfully.
+    </div>
+
+    <!-- Invisible frame to prevent redirect -->
+    <iframe name="dummy-frame" style="display:none;"></iframe>
+  </div>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+
+      // Send form manually
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          document.getElementById("success-message").style.display = "block";
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      }).catch(error => {
+        alert("Submission failed. Please try again.");
+      });
+    }
+  </script>
 
 </body>
 </html>
