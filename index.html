@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Form</title>
+  <title>Get a Quote</title>
 
+  <!-- Uploadcare -->
   <script>
     UPLOADCARE_PUBLIC_KEY = "39990cd27c833ace1e9a";
   </script>
@@ -16,49 +17,60 @@
       background: #000;
       display: flex;
       justify-content: center;
-      padding: 60px;
+      padding: 60px 20px;
     }
 
     .form-container {
-      background: #000000;
+      background: #111;
       color: #fff;
       padding: 50px;
       border-radius: 12px;
       width: 100%;
       max-width: 900px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
       border: 1px solid #333;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
     }
 
     label {
       display: block;
       font-weight: bold;
-      font-size: 20px;
-      margin-top: 25px;
+      font-size: 18px;
+      margin-top: 20px;
+      margin-bottom: 6px;
       color: #fff;
     }
 
     input, textarea {
       width: 100%;
-      padding: 18px;
-      margin-top: 8px;
-      font-size: 18px;
+      padding: 16px;
+      font-size: 16px;
       background: #222;
       color: #fff;
       border: 1px solid #555;
-      border-radius: 8px;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
     }
 
     button {
       background-color: #2a6ee0;
       color: #fff;
       border: none;
-      padding: 18px;
+      padding: 16px;
       margin-top: 30px;
       cursor: pointer;
       border-radius: 8px;
       width: 100%;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       box-shadow: 0 0 10px #2a6ee0;
     }
@@ -86,9 +98,13 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    a {
-      color: #4eaaff;
-      text-decoration: underline;
+    .uploadcare--widget__button {
+      background: #2a6ee0 !important;
+      color: #fff !important;
+      font-weight: bold;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -106,6 +122,9 @@
 
       <label>Email:</label>
       <input type="email" name="email" required />
+
+      <label>Phone Number:</label>
+      <input type="tel" name="phone" required />
 
       <label>Message:</label>
       <textarea name="message" rows="5" required></textarea>
