@@ -12,12 +12,19 @@
   <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 
   <style>
-    body {
-      font-family: sans-serif;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
       background: #000;
+      font-family: sans-serif;
+    }
+
+    body {
       display: flex;
       justify-content: center;
-      padding: 60px 20px;
+      align-items: center;
     }
 
     .form-container {
@@ -106,6 +113,16 @@
       border-radius: 6px;
       font-size: 14px;
     }
+
+    .form-note {
+      color: #ccc;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    .form-note strong {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -132,14 +149,10 @@
       <label>Attach a File:</label>
       <input type="hidden" role="uploadcare-uploader" name="file" data-multiple="false" />
 
-
-
-      <p style="color: #ccc; font-size: 14px;">
-📩 If you’re having trouble submitting this form, email us directly at <strong>sales@weldingworldinc.com</strong>
-</p>
-
-      
-      
+      <p class="form-note">
+        📩 If you’re having trouble submitting this form, email us directly at 
+        <strong>sales@weldingworldinc.com</strong>
+      </p>
 
       <button type="submit">Send</button>
     </form>
